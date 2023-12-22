@@ -308,7 +308,7 @@ foreach (var item in namesResult2)
 */
 
 
-
+/*
 class Program
 {
     static void Main(string[] args)
@@ -332,4 +332,80 @@ class Program
 }
 
 
+*/
+
+
+
+//Uso de condiciona IF
+
+/*
+using System;
+
+namespace Metodos_Learning
+{
+    class Program
+    {
+
+
+        static void Main(string[] args)
+        {
+
+            Console.WriteLine("Vamos a evaluar si puedes conducir");
+            Console.WriteLine("introduce tu edad");
+
+            int edad = Int32.Parse(Console.ReadLine());
+            if (edad>=18)
+            {
+            Console.WriteLine("tienes carnet?");
+
+            }
+            
+            string carnet = Console.ReadLine();
+
+            if (edad >= 18 && carnet.ToLower() == "si")
+            {
+                Console.WriteLine("puedes conducir vehiculo");
+            } 
+            else
+            {
+                Console.WriteLine("no puedes conducir");
+            }
+        }
+
+    }
+}
+
+*/
+
+
+using System;
+
+namespace Metodos_Learning
+{
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+
+            Console.WriteLine("Introduce nota 1er parcial");
+            float parcial1 = Int32.Parse(Console.ReadLine());
+
+            Console.WriteLine("Introduce nota 2do parcial");
+            float parcial2 = Int32.Parse(Console.ReadLine());
+
+            Console.WriteLine("Introduce nota 3er parcial");
+            float parcial3 = Int32.Parse(Console.ReadLine());
+
+            if (parcial1 >=5 || parcial2 >= 5 || parcial3 >= 5)
+            {
+                float average = (parcial1 + parcial2 + parcial3) / 3;
+                Console.WriteLine($"Tu promedio es : {average}");
+            }
+            else Console.WriteLine("Devuelve en septiembre");
+
+        }
+    }
+  
+}
 
