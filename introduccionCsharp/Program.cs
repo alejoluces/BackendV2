@@ -377,7 +377,7 @@ namespace Metodos_Learning
 
 */
 
-
+/*
 using System;
 
 namespace Metodos_Learning
@@ -409,3 +409,396 @@ namespace Metodos_Learning
   
 }
 
+*/
+
+/*
+using System;
+using static System.Math;
+
+namespace ConceptosPOO
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //realizarTarea();
+            var miVariable = new { Nombre = "Alejo", edad = 23 };
+            Console.WriteLine(miVariable.Nombre +" "+ miVariable.edad);
+
+        }
+    }
+ }
+*/
+
+
+
+//Explicacion de herencias y metodos de accesos
+
+
+/*
+using System;
+
+namespace Herencia
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            Caballo Babieca = new Caballo("Babieca");
+            Humano Alejandro = new Humano("Alejandro");
+            Gorila Copito = new Gorila("Copito");
+
+            Mamiferos[] almaceAnimales = new Mamiferos[4];
+
+            Caballo[] almacenDeCaballos = new Caballo[4];
+
+            almaceAnimales[0] = Babieca;
+            almaceAnimales[1] = new Caballo("Pirri");
+            almaceAnimales[2] = new Caballo("Bucéfalo");
+            almaceAnimales[3] = Alejandro;
+
+
+
+            for (int i = 0; i < almaceAnimales.Length; i++)
+            {
+                almaceAnimales[i].getNombre();
+            }
+
+
+
+            
+            Alejandro.getNombre();
+            Babieca.getNombre();
+            Copito.getNombre();
+            
+
+
+        }
+    }
+    class Mamiferos
+    {
+        // Constructor
+
+        public Mamiferos(String nombre)
+        {
+            nombreSerVivo = nombre;
+
+
+        }
+
+        public void respirar()
+        {
+            Console.WriteLine("Soy capaz de respirar");
+
+        }
+
+        public virtual void pensar()
+        {
+            Console.WriteLine("Pensamiento básico instintivo");
+        }
+
+
+        public void cuidarCrias()
+        {
+            Console.WriteLine("Cuido de mis crias hasta que se valgan por si solas");
+        }
+
+        public void getNombre()
+        {
+            Console.WriteLine("El nombre del ser vivo es: " + nombreSerVivo);
+        }
+
+        private String nombreSerVivo;
+    }
+
+    class Caballo : Mamiferos
+    {
+        public Caballo(String nombreCaballo) : base(nombreCaballo)
+        {
+
+        }
+        public void galopar()
+        {
+            Console.WriteLine("Soy capaz de galopar");
+        }
+
+    }
+
+    class Humano : Mamiferos
+    {
+
+        public Humano(String nombreHumano) : base(nombreHumano)
+        {
+
+        }
+        public void pensar()
+        {
+            Console.WriteLine("Soy capaz de pensar ¿?");
+        }
+
+    }
+
+    class Gorila : Mamiferos
+    {
+        public Gorila(String nombreGorila) : base(nombreGorila)
+        {
+
+        }
+
+        public void pensar()
+        {
+            Console.WriteLine("Pensamiento instintivo avanzado");
+        }
+        public void trepar()
+        {
+            Console.WriteLine("Soy capaz de trepar");
+        }
+
+    }
+
+}
+
+*/
+
+// Public
+
+
+/*
+using System;
+using System.Reflection.Metadata.Ecma335;
+
+
+namespace Herencia 
+{
+    class Program
+    {
+        static void Main(string[] args) 
+        {
+            // Acceso permitido
+
+            SumandoNumero(20, 90);
+            
+
+
+        }
+        static int SumandoNumero(int numbers1, int numbers2)
+        {
+           
+            int result = numbers1 + numbers2;
+            return result;
+        }
+
+
+
+    }
+  
+
+
+
+}
+    
+  */
+
+
+// Private
+/*
+public class MiClase
+{
+    private string nombrePrivado;
+
+    private void MetodoPrivado()
+    {
+        Console.WriteLine("Método privado llamado.");
+    }
+
+    public void MetodoAccesible()
+    {
+        nombrePrivado = "Alejandro"; // Acceso permitido dentro de la clase
+        MetodoPrivado(); // Acceso permitido dentro de la clase
+    }
+}
+
+// En otro lugar del código
+MiClase miObjeto = new MiClase();
+// miObjeto.nombrePrivado = "Error"; // Acceso no permitido
+// miObjeto.MetodoPrivado(); // Acceso no permitido
+miObjeto.MetodoAccesible(); // Acceso permitido a través de un método público
+*/
+
+// Protected
+/*
+public class ClaseBase
+{
+    protected string NombreProtegido;
+
+    protected void MetodoProtegido()
+    {
+        Console.WriteLine("Método protegido llamado.");
+    }
+}
+
+public class ClaseDerivada : ClaseBase
+{
+    public void DemostrarAcceso()
+    {
+        NombreProtegido = "Alejandro"; // Acceso permitido en la clase derivada
+        MetodoProtegido(); // Acceso permitido en la clase derivada
+    }
+}
+
+// En otro lugar del código
+ClaseDerivada miObjeto = new ClaseDerivada();
+miObjeto.DemostrarAcceso(); // Acceso permitido a través de un método de la clase derivada
+// Accesos directos a NombreProtegido o MetodoProtegido no están permitidos fuera de la jerarquía de clases.
+
+*/
+
+/*
+
+using System;
+namespace PropiedadesdeAcceso
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Empleado empleado = new Empleado("Alejandro", 37, 2000);
+            empleado.Sueldo = 3000;
+            Console.WriteLine(empleado.Sueldo);
+        }
+    }
+
+    class Empleado
+    {
+        public Empleado(string nombre, int edad, double sueldo)
+        {
+            this.nombre = nombre;
+            this.edad = edad;
+            this.sueldo = sueldo;
+        }
+
+        public double Sueldo
+        {
+            get
+            {
+                
+                return sueldo;
+            }
+            set
+            {
+                if (value < 0)
+                {
+                    Console.WriteLine("El sueldo no puede ser negativo");
+                    sueldo = 0;
+                    Console.WriteLine($"Su salario es de : {sueldo}");
+                }
+                else
+                {
+                    sueldo = value;
+                }
+            }
+        }
+
+        private string nombre;
+        private int edad;
+        private double sueldo;
+    }
+}
+*/
+
+
+/*
+
+using System;
+namespace PropiedadesdeAcceso
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            SumAndMultipl sumAndMultipl = new SumAndMultipl();
+            int resultado = sumAndMultipl.Sumar(1, 5, 8);   
+            Console.WriteLine($"El resultado de la operacion es : {resultado}");
+
+            Dividirnum divide = new Dividirnum();
+            int resultDiv = divide.Dividir(100, 50);
+            Console.WriteLine($"El resultado de la operacion dividir es : {resultDiv}");
+
+            Restar(50, 20);
+
+        }
+
+        static void Restar(int numRes1, int numRes2)
+        {
+            int resultres = numRes1-numRes2;
+            Console.WriteLine($"El resultado de la resta es :{resultres}");
+            
+        }
+
+    }
+    class SumAndMultipl
+    {
+        public int Sumar(int num1, int num2, int num3)
+        {
+
+            int result = (num1 + num2) * num3;
+            return result;
+
+        }
+    }
+    class Dividirnum
+    {
+        public int Dividir(int numOne, int numTwo) 
+        {
+            int resultDiv = numOne / numTwo;
+            return resultDiv;
+        }
+    }
+
+
+}
+*/
+
+// Usando Dictionary y Collection Genery
+
+using System;
+using System.Collections.Generic;
+
+namespace Solution
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            ArrDeAge<int> age = new ArrDeAge<int>();
+
+            // age.Add("alejo", 41);
+
+            Console.WriteLine(age);
+
+        }
+
+    }
+
+    class ArrDeAge<T>
+    {
+        public  ArrDeAge()
+        {
+            Dictionary<string, int> age = new Dictionary<string, int>();
+
+            age.Add("alejo", 41);
+            age.Add("Leo", 55);
+            age.Add("Jonh", 19);
+            age.Add("Gabo", 15);
+
+            foreach (var item in age)
+            {
+                Console.WriteLine(item);
+            }
+
+        }
+    }
+
+}
+  
